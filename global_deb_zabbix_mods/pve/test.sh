@@ -1,0 +1,1 @@
+cat /etc/pve/qemu-server/*.conf | grep memory | cut -f2 -d ' '

@@ -1,0 +1,7 @@
+screen
+ethtool
+iotop
+htop
+sudo
+smartmontools
+lm-sensors

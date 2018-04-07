@@ -1,0 +1,1 @@
+sensors | grep "Physical id 0" | awk '{print $ 4}' | cut -c 2-3
