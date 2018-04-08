@@ -30,7 +30,7 @@ then
         else echo 3
     fi
 fi
-
+}
 
 #Разяъснение значений 0 1 2
 # 0 - Значит параметр vm.swappiness не настроен в /etc/sysctl.conf
