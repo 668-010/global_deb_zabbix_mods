@@ -13,7 +13,7 @@ if [ $sumnodes -eq 2 ]                                                          
                 else echo 1
                 fi
     else
-        if [ $sumnodes -gt 2 ]                                                           Иначе если количество нод больше двух
+        if [ $sumnodes -gt 2 ]                                                          #Иначе если количество нод больше двух
                 then
                     if grep "two_node: 1" /etc/corosync/corosync.conf > /dev/nul        # и если найден параметр two_node: 1 то алерт, если нет то всё норм.
                         then echo 2
