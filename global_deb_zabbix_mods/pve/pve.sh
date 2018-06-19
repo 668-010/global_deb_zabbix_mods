@@ -28,4 +28,23 @@ function kernel {		#Проверка версии ядра
 uname -r
 }
 
+function vmmemory {
+memtotalbyte=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')            #Значение общей памяти системы в байтах
+let memtotal=$memtotalbyte/1024                                                 #Значение общей памяти системы в Мегабайтах
+
+unset array
+array=( `cat /etc/pve/qemu-server/*.conf | grep memory | awk '{print $ 2}'` )   #Массив из значений количества ОЗУ всех виртуальных машин
+
+vmmem=0
+
+for i in "${array[@]}"                                                          #Цикл в котором все значения массива плюсуются и выводится общая сумма ОЗУ всех Виртуальных машин
+do
+    let "vmmem += $i"
+done
+
+
+let percent=$vmmem*100/$memtotal                                                #Процент зарезервированного ВМ ОЗУ
+echo $percent
+}
+
 $1
