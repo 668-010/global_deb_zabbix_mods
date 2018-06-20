@@ -32,18 +32,22 @@ function vmmemory {
 memtotalbyte=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')            #Значение общей памяти системы в байтах
 let memtotal=$memtotalbyte/1024                                                 #Значение общей памяти системы в Мегабайтах
 
-unset array
-array=( `cat /etc/pve/qemu-server/*.conf | grep memory | awk '{print $ 2}'` )   #Массив из значений количества ОЗУ всех виртуальных машин
+unset array array1
+array=( `grep onboot /etc/pve/qemu-server/*.conf | cut -d ':' -f1` )			#Массив из файлов-конфигов виртуальных машин с автозагрузкой
+for i in "${array[@]}"															#Цикл в котором создается массив array1 из значений ОЗУ виртульных машин с автозагрузкой
+do
+array1+=( `cat $i | grep memory | awk '{print $ 2}'` )
+done
 
-vmmem=0
 
-for i in "${array[@]}"                                                          #Цикл в котором все значения массива плюсуются и выводится общая сумма ОЗУ всех Виртуальных машин
+vmmem=0																			#Объявление переменной vmmem - сумма всех виртуальных машин с автозагрузкой - равна нулю
+for i in "${array1[@]}"															#Цикл в котором все значения массива array1 плюсуются в переменную vmmem
 do
     let "vmmem += $i"
 done
 
 
-let percent=$vmmem*100/$memtotal                                                #Процент зарезервированного ВМ ОЗУ
+let percent=$vmmem*100/$memtotal												#Процент зарезервированного ВМ ОЗУ
 echo $percent
 }
 
