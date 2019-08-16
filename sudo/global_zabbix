@@ -1,11 +1,17 @@
 Defaults:zabbix !requiretty
 Cmnd_Alias ZABBIX_CMD = \
-/etc/zabbix/_lin_zabbix_mod/CPU_temp/cpu.temp.sh, \
-/etc/zabbix/_lin_zabbix_mod/packages/dpkg.sh, \
-/etc/zabbix/_lin_zabbix_mod/swappiness/swappiness.sh, \
-/etc/zabbix/_lin_zabbix_mod/quorum/quorum.sh, \
-/etc/zabbix/_lin_zabbix_mod/mounts/mounts.sh, \
-/etc/zabbix/_lin_zabbix_mod/pve/pve.sh, \
+/etc/zabbix/global_deb_zabbix_mods/CPU_temp/cpu.temp.sh, \
+/etc/zabbix/global_deb_zabbix_mods/adaptec/adaptec_status.sh, \
+/etc/zabbix/global_deb_zabbix_mods/mounts/freez_mounts.sh, \
+/etc/zabbix/global_deb_zabbix_mods/mounts/mounts.sh, \
+/etc/zabbix/global_deb_zabbix_mods/mounts/nofail.sh, \
+/etc/zabbix/global_deb_zabbix_mods/nut/nut-ups.sh, \
+/etc/zabbix/global_deb_zabbix_mods/packages/dpkg.sh, \
+/etc/zabbix/global_deb_zabbix_mods/pve/pve.sh, \
+/etc/zabbix/global_deb_zabbix_mods/quorum/corosync.sh, \
+/etc/zabbix/global_deb_zabbix_mods/quorum/quorum.sh, \
+/etc/zabbix/global_deb_zabbix_mods/swappiness/swappiness.sh, \
+/etc/zabbix/global_deb_zabbix_mods/mounts/mounts.sh, \
 /usr/StorMan/arcconf, \
 /sbin/ethtool, \
 /usr/bin/perl, \
